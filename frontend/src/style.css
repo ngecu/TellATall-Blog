@@ -1,0 +1,46 @@
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --blue: rgb(26, 57, 87);
+  --white: rgb(236, 236, 236);
+}
+body{
+  transition:  0.3s ease-in-out, color 0.6s ease-in-out;
+}
+
+[data-theme="dark"] {
+  --background-color: var(--blue);
+  --text-color: var(--white);
+}
+
+.App,.header1,.table {
+
+  background-color: var(--background-color) !important;
+  color: var(--text-color) !important;
+  transition:  0.3s ease-in-out, color 0.6s ease-in-out;
+
+}
+
+
+#darkMode {
+  /* background: transparent url("../moon.png") no-repeat center; */
+  background-size: 30px 30px;
+  width: 45px;
+  height: 45px;
+  filter: grayscale(100%);
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+#darkMode:hover,
+#darkMode:focus {
+  filter: none;
+  background-color: black;
+  cursor: pointer;
+}
+
+#darkMode.clicked {
+  filter: none !important;
+  background-color: black;
+}
