@@ -32,14 +32,7 @@ import './style.css'
 
 const App = () => {
 
-  componentDidMount() {
-    const head = document.querySelector('head');
-    const script = document.createElement('script');
-    script.setAttribute('async',true);
-    script.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4787058812026050');
-    head.appendChild(script);
-  }
-
+  
   const storedDarkMode = localStorage.getItem("DARK_MODE");
 
   const [darkMode, setDarkMode] = useState(storedDarkMode);
