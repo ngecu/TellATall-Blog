@@ -1,5 +1,9 @@
 .mainheading {
 	padding:1rem 0rem;
+	border-bottom: 3px solid #000;
+margin-bottom: 15px;
+padding-bottom: 15px;
+	
 }
 .bg-light{
 	background-color: white !important;

@@ -115,9 +115,9 @@ const NewPostScreen = ({ location, history }) => {
             dispatch(createPostAction(s))
             notify()
            
-            // setTimeout(() => { 
-            //     history.push('/');
-            //   }, 5000)
+            setTimeout(() => { 
+                history.push('/');
+              }, 5000)
     }
 
 
@@ -161,7 +161,7 @@ pauseOnHover
 />
       
         <Row >
-            <Col xs={6} md={6}>
+            <Col xs={12} md={6}>
         <FormContainer>
             <h1>New Post</h1>
 
@@ -228,7 +228,7 @@ pauseOnHover
 
         </FormContainer>
             </Col>
-            <Col xs={6} md={6}>
+            <Col xs={12} md={6}>
            
                 <Row>
                     <Col md={2} xs={12}>

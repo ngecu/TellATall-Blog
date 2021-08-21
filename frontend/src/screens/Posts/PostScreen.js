@@ -94,6 +94,9 @@ const PostScreen = ({ match }) => {
                             </Col>
 
                             <Col md={8} xs={12} className="col-md-offset-2">
+                                <div className="after-post-tags">
+                                    <Tag tags={post?.tags} />
+                                    </div>
                                 <Col className="mainheading">
                                     <h1 className="posttitle">{post?.title}</h1>
                                     <Author author={post?.author} />
@@ -107,10 +110,7 @@ const PostScreen = ({ match }) => {
                                         <Markup content={post?.text} />
                                     </div>
 
-                                    <div className="after-post-tags">
-
-                                       <Tag tags={post?.tags} />
-                                    </div>
+                                   
 
 
                             </Col>

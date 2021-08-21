@@ -25,7 +25,7 @@ const Tag = ({tags} ) => {
 
         <ul className="tags">
             {tags && tags.map((tag)=>(
-                <li style={{backgroundColor:tag.color,color:"white"}}>{tag.name}</li>
+                <li style={{color:tag.color}}>{tag.name}</li>
             ))
 
             }

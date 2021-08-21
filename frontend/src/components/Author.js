@@ -18,16 +18,10 @@ const Author = ({author} ) => {
 
 
         <Row className=" post-top-meta">
-
-            <Col md={2}>
-                <img className="author-thumb"
-                                           src={author?.image}
-                                           alt="Sal"/>
-            </Col>
-            <Col md={10}>
+            <Col md={6}>
                 {author?.name}
-                <span className="author-description">{author?.description}</span>
-                <span className="post-date">{author?.createdAt}</span>
+                <span>Digital Repoter</span>
+                
             </Col>
         </Row>
 
