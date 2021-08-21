@@ -21,10 +21,10 @@ const NH = ({toggleDarkMode,darkMode}) => {
     return (
         <header>
 
-            <Navbar bg='light' variant='light' expand='lg' collapseOnSelect>
+            <Navbar  bg='light' variant='light' fixed="top" expand='lg' collapseOnSelect>
                 <Container>
-                    <LinkContainer to='/'>
-                        <Navbar.Brand><img  className="my-0" src={logo} style={{maxWidth: "70px",maxHeight: "70px"}} />  </Navbar.Brand>
+                    <LinkContainer to='/' style={{fontFamily:"Righteous"}}>
+                        <Navbar.Brand  ><img  className="my-0" src={logo} style={{maxWidth: "70px",maxHeight: "70px"}} />TellATale  </Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>

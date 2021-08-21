@@ -32,7 +32,16 @@ import './style.css'
 
 const App = () => {
 
-  
+  useEffect(() => {
+    const head = document.querySelector('head');
+    const script = document.createElement('script');
+    script.setAttribute('async',true);
+    script.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4787058812026050');
+    head.appendChild(script);
+  });
+
+
+
   const storedDarkMode = localStorage.getItem("DARK_MODE");
 
   const [darkMode, setDarkMode] = useState(storedDarkMode);
@@ -48,12 +57,15 @@ const App = () => {
 
   return (
     <Router>
-<div className="App"  data-theme={darkMode ? "dark" : "light"}>
+      <NH className="header1" toggleDarkMode = {toggleDarkMode} darkMode={darkMode} />
+<div className="App"  data-theme={darkMode ? "dark" : "light"} style={{minHeight: "75rem",paddingTop:"4.5rem"}}>
+
+
 
 {/*<Header/>*/}
 
        
-            <NH className="header1" toggleDarkMode = {toggleDarkMode} darkMode={darkMode} />
+            
       <main className='py-3'>
 
 

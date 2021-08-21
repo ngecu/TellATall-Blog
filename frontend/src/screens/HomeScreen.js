@@ -40,10 +40,7 @@ dispatch(getPostsAction())
 
       <div className="mainheading">
         <Row>
-          <Col>
-		<h1 className="sitetitle">TellATale</h1>
-
-          </Col>
+      
           <Col>
           <div className="mainheading">
           <p className="lead">
@@ -71,7 +68,7 @@ dispatch(getPostsAction())
       ) : (
 		<Row>
 			
-			<Col xs={6} md={6}>
+			<Col xs={12} md={6}>
 			{posts.slice(0,1).map((post) => (
 				<Link to={`/post/${post._id}`}>
 <Card className="bg-dark text-white h-100">
@@ -92,7 +89,7 @@ dispatch(getPostsAction())
 </Link>
               ))}
 			</Col>
-			<Col xs={6} md={6}>
+			<Col xs={12} md={6}>
 				
 	<div className="card-columns listfeaturedtag">
 			{posts.slice(1,5).map((post) => (
@@ -136,7 +133,7 @@ dispatch(getPostsAction())
     {posts.map((post) => (
     <>
        {post.author.isApproved ? (
-        <Col xs={4} md={4}>
+        <Col xs={12} md={4}>
         <Link to={`/post/${post._id}`}>
            <img class="img-fluid" src={post.photo} alt={post.photo} height="20vh"/>
        </Link>
