@@ -20,6 +20,8 @@ const Author = ({author} ) => {
         <Row className=" post-top-meta">
             <Col md={6}>
                 {author?.name}
+                <br/>
+                <i class="fas fa-edit"></i>
                 <span>Digital Repoter</span>
                 
             </Col>

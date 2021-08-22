@@ -12,7 +12,7 @@ const deleteHandler = (id)=>{
 
 
 
-const Tag = ({tags} ) => {
+const Tag = ({tags,date} ) => {
     console.log(tags)
     if(tags){
         tags.map(tag=>console.log(tag))
@@ -25,10 +25,12 @@ const Tag = ({tags} ) => {
 
         <ul className="tags">
             {tags && tags.map((tag)=>(
-                <li style={{color:tag.color}}>{tag.name}</li>
+                <li style={{color:tag.color}}>{tag.name.toUpperCase()}</li>
+                
             ))
 
             }
+            <li>{date?.substring(0, 10)}</li>
 
 
         </ul>

@@ -2,7 +2,7 @@ import React,{useState,useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import {Container, Nav} from 'react-bootstrap'
 // import Header from './components/Header'
-import DarkModeToggle from "react-dark-mode-toggle";
+
 
 import NH from './components/NH'
 import Footer from './components/Footer'
@@ -22,9 +22,13 @@ import PostScreen from "./screens/Posts/PostScreen";
 import NewPostScreen from "./screens/Posts/NewPostScreen";
 import updatePostScreen from "./screens/Posts/updatePostScreen";
 import AllPostsScreen from './screens/Posts/AllPostsScreen';
+import TagPostScreen from './screens/Posts/TagPostScreen';
+
 
 import AuthorPostsScreen from "./screens/Posts/AuthorPostsScreen";
-import ProfileScreen from "./screens/Profile/ProfileScreen"
+import ProfileScreen from "./screens/Profile/ProfileScreen";
+
+
 import './style.css'
 
 
@@ -42,23 +46,13 @@ const App = () => {
 
 
 
-  const storedDarkMode = localStorage.getItem("DARK_MODE");
-
-  const [darkMode, setDarkMode] = useState(storedDarkMode);
-  const toggleDarkMode = () => setDarkMode(darkMode ? false : true);
-
-
-  useEffect(() => {
-    localStorage.setItem("DARK_MODE", darkMode);
-
-  }, [darkMode]);
 
   
 
   return (
     <Router>
-      <NH className="header1" toggleDarkMode = {toggleDarkMode} darkMode={darkMode} />
-<div className="App"  data-theme={darkMode ? "dark" : "light"} style={{minHeight: "75rem",paddingTop:"4.5rem"}}>
+      <NH className="header1"  />
+<div className="App"   style={{minHeight: "75rem",paddingTop:"4.5rem",backgroundColor:"#f2f3f5"}}>
 
 
 
@@ -79,6 +73,7 @@ const App = () => {
 
 
           <Route path='/post/:id' component={PostScreen} />
+          <Route path='/tag/:id' component={TagPostScreen} />
             <Route path='/newPost' component={NewPostScreen} />
             <Route path='/updatepost/:id' component={updatePostScreen} />
 

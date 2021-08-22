@@ -1,38 +1,61 @@
-import React from 'react'
+import React,{useState, useEffect  }  from 'react'
 import { Route } from 'react-router-dom'
+
+
+
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 import logo from '../resources/images/logo.png'
+import {getTagsAction} from "../actions/tagActions";
+import Tag from "./Tag";
 
-
-const NH = ({toggleDarkMode,darkMode}) => {
+const NH = () => {
     const dispatch = useDispatch()
+    const [tag, setTag] = useState([])
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
+    const tagList = useSelector((state)=>state.readTags)
+    const {tags} = tagList
     const logoutHandler = () => {
         dispatch(logout())
     }
 
+    useEffect(() => {
+        dispatch(getTagsAction())
+    },[dispatch,getTagsAction])
+
     return (
         <header>
 
-            <Navbar  bg='light' variant='light' fixed="top" expand='lg' collapseOnSelect>
+            <Navbar style={{borderBottom:"solid  #3737f7 "}} bg='light' variant='light' fixed="top" expand='lg' collapseOnSelect>
                 <Container>
                     <LinkContainer to='/' style={{fontFamily:"Righteous"}}>
                         <Navbar.Brand  ><img  className="my-0" src={logo} style={{maxWidth: "70px",maxHeight: "70px"}} />TellATale  </Navbar.Brand>
                     </LinkContainer>
+
+                  
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="me-auto">
+      {tags.map((tag)=>(
+          <Nav.Link href={`/tag/${tag.name}`}>{tag.name}</Nav.Link>
+      ))}
+     
+      </Nav>
+    </Navbar.Collapse>
                     <Navbar.Toggle aria-controls='basic-navbar-nav' />
                     <Navbar.Collapse id='basic-navbar-nav'>
                         {/*<Route render={({ history }) => <SearchBox history={history} />} />*/}
                         <Nav className='ml-auto'>
-
+                            
+                        <NavDropdown title={<i class='fas fa-user'></i>} id="basic-nav-dropdown">
                             {userInfo ? (
-                                <NavDropdown title={userInfo.name} id='username'>
+                                
+                                  <NavDropdown title={userInfo.name} id='username'>
                                     <LinkContainer to='/profile'>
                                         <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
@@ -43,6 +66,9 @@ const NH = ({toggleDarkMode,darkMode}) => {
                                         Logout
                                     </NavDropdown.Item>
                                 </NavDropdown>
+                               
+
+                              
                             ) : (
 
                                 <LinkContainer to='/login'>
@@ -62,20 +88,18 @@ const NH = ({toggleDarkMode,darkMode}) => {
 
                                 </NavDropdown>
                             )}
+                            </NavDropdown>
 
                             
                         </Nav>
                     
 
 
-                        <Form inline>
+                        {/* <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
       <Button variant="outline-success"><i class="fas fa-search"></i></Button>
-    </Form>
-    <div onClick={toggleDarkMode}>
-                        {darkMode ? <i class="fas fa-toggle-off"></i> : <i class="fas fa-toggle-on"></i>}
-
-</div>
+    </Form> */}
+   
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

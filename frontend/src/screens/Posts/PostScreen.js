@@ -62,7 +62,7 @@ const PostScreen = ({ match }) => {
 
                     <Container>
                         <Row>
-                            <Col md={2} xs={12}>
+                            <Col md={1} xs={12}>
                                 <div className="share">
                                     <p>
                                         Share
@@ -92,10 +92,12 @@ const PostScreen = ({ match }) => {
                                    
                                 </div>
                             </Col>
+                      
 
-                            <Col md={8} xs={12} className="col-md-offset-2">
+                            <Col md={11} xs={12} className="col-md-offset-2">
                                 <div className="after-post-tags">
-                                    <Tag tags={post?.tags} />
+                                    <Tag date={post?.createdAt} tags={post?.tags} />
+                                    {/* <span>{post?.createdAt?.substring(0, 10)}</span> */}
                                     </div>
                                 <Col className="mainheading">
                                     <h1 className="posttitle">{post?.title}</h1>
@@ -103,17 +105,25 @@ const PostScreen = ({ match }) => {
 
                                 </Col>
 
-
-                                <img className="featured-image img-fluid" src="assets/img/demopic/10.jpg" alt=""/>
-
+                                <Row>
+                                    <Col  md={10} xs={10}>
                                     <div className="article-post">
                                         <Markup content={post?.text} />
                                     </div>
+                                    <Col  md={2} xs={2}>
+                                    Ads
+                                    </Col>
+                                    </Col>
+                                </Row>
+                                    
 
                                    
 
 
                             </Col>
+                        <Col md={3}>
+                        
+                        </Col>
                         </Row>
                         </Container>
                         <div class="graybg">
