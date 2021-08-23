@@ -8,6 +8,10 @@ import { getUserDetails, updateUserProfile } from '../../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../../constants/userConstants'
 import {deletePost, listMyPosts} from '../../actions/postActions'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -48,6 +52,13 @@ const ProfileScreen = ({ location, history }) => {
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
       dispatch(deletePost(id))
+
+      notify()
+           
+      setTimeout(() => { 
+          history.push('/');
+        }, 5000)
+
     }
   }
 
@@ -60,7 +71,32 @@ const ProfileScreen = ({ location, history }) => {
     }
   }
 
+  const notify = () => toast.success('🦄 Post Deleted Successfully,Redirecting', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });;
+
+
   return (
+    <>   
+     <ToastContainer
+        
+    position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
+
     <Row>
       <Col md={3}>
         <h2>User Profile</h2>
@@ -170,6 +206,7 @@ const ProfileScreen = ({ location, history }) => {
       </Col>
 
     </Row>
+  </>
   )
 }
 

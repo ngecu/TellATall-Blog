@@ -25,7 +25,7 @@ const Tag = ({tags,date} ) => {
 
         <ul className="tags">
             {tags && tags.map((tag)=>(
-                <li style={{color:tag.color}}>{tag.name.toUpperCase()}</li>
+                <li style={{color:tag.color}}>{tag?.name?.toUpperCase()}</li>
                 
             ))
 

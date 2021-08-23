@@ -29,9 +29,8 @@ section {
 	margin-bottom:27px;
 }
 .section-title span {
-	border-bottom:1px solid rgba(0,0,0,.44);
+	border-bottom:medium solid rgb(55, 55, 247);
 	display:inline-block;
-	padding-bottom:20px;
 	margin-bottom:-1px;
 }
 @media (min-width:576px) {
@@ -99,7 +98,7 @@ section {
 }
 .listrecent .wrapfooter {
 	font-size:12px;
-	margin-top:30px;
+	margin-top: 10px;
 }
 .author-thumb {
 	width:40px;
@@ -283,7 +282,7 @@ blockquote {
 	}
 	.listfeaturedtag .wrapfooter {
 		position:relative;
-		margin-top:30px;
+		margin-top:10px;
 	}
 	.listfeaturedtag .card-block {
 		padding:20px;

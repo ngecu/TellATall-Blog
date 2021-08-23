@@ -210,7 +210,7 @@ pauseOnHover
                     <select multiple onChange={handleChange.bind(this)} required >
                         {
                             tags.map(item => (
-                                <option value={item._id}>{item.name}</option>
+                                <option value={item?._id}>{item.name}</option>
                             ))
                         }
                     </select>

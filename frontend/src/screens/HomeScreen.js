@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col,Container,Card } from 'react-bootstrap'
+import { Row, Col,Container,Card,Carousel } from 'react-bootstrap'
 import Product from '../components/Post'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -18,6 +18,11 @@ import {getTagsAction} from "../actions/tagActions";
 import Post from "../components/Post";
 
 const HomeScreen = ({history,match}) => {
+
+  const getWordCount = (text) =>{
+    let count = text.match(/\w+/g).length;
+    return Math.ceil(count / 500)
+  }
 
   const dispatch = useDispatch()
   const postlist = useSelector((state) => state.readPosts)
@@ -44,13 +49,13 @@ dispatch(getPostsAction())
           <Col>
           <div className="mainheading">
           <p className="lead">
-    Your go-to entertainment & lifestyle news website.
+    Your Go-to Campus Life entertainment & lifestyle magazine.
 		</p>
     </div>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col >
           <StockTicker posts={posts} />
           </Col>
         </Row>
@@ -61,6 +66,9 @@ dispatch(getPostsAction())
 	<div className="section-title">
 		<h2><span>Featured</span></h2>
 	</div>
+
+  
+
   {loadingReadPosts ? (
         <Loader />
       ) : error ? (
@@ -69,30 +77,35 @@ dispatch(getPostsAction())
 		<Row>
 			
 			<Col xs={12} md={6}>
-			{posts.slice(0,1).map((post) => (
-				<Link to={`/post/${post._id}`}>
-<Card className="bg-dark text-white h-100">
-  <Card.Img src={post.photo} alt="Card image" />
-  <Card.ImgOverlay style={{  "background": "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5))","height":"100%"}}>
-	  <div style={{position:"relative",top:"50%"}}>
-	  <Card.Title style={{ textTransform: 'uppercase'}} >{post.title}</Card.Title>
-    <Card.Text>
-      {post.description}
-    </Card.Text>
-    {/* <Card.Text>Last updated 3 mins ago</Card.Text> */}
-	<small>Last updated 3 mins ago</small>
-	  </div>
-    
 
-  </Card.ImgOverlay>
-</Card>
-</Link>
-              ))}
+      <Carousel variant="dark">
+      {posts.map((post) => (
+
+  <Carousel.Item>
+    <Link to={`/post/${post._id}`}>
+    <img
+    style={{
+      background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5))",height:"20%"}}
+  
+      className="d-block w-100"
+      src={post.photo}
+      alt="First slide"
+    />
+    <Carousel.Caption>
+      <h5>First slide label</h5>
+      <p>{post.title}</p>
+    </Carousel.Caption>
+    </Link>
+  </Carousel.Item>
+))}
+</Carousel>
+
+	
 			</Col>
 			<Col xs={12} md={6}>
 				
 	<div className="card-columns listfeaturedtag">
-			{posts.slice(1,5).map((post) => (
+			{posts.slice(0,5).map((post) => (
 				<Link to={`/post/${post._id}`}>
 <Card className="bg-dark text-white h-100">
   <Card.Img src={post.photo} alt="Card image" />
@@ -119,10 +132,12 @@ dispatch(getPostsAction())
 
 )}
 </section>
-  
-<section class="recent-posts">
+  <div>
+  {tags.map((tag)=>(
+
+    <section class="recent-posts">
 	<div class="section-title">
-		<h2><span>All Stories</span></h2>
+		<h2><span>{tag.name}</span></h2>
 	</div>
   {loadingReadPosts ? (
         <Loader />
@@ -130,34 +145,36 @@ dispatch(getPostsAction())
         <Message variant='danger'>{error}</Message>
       ) : (
 	<Row className="listrecent" > 
-    {posts.map((post) => (
+    { posts.map((post) => (
     <>
-       {post.author.isApproved ? (
-        <Col xs={12} md={4}>
+       {post.author.isApproved && post?.tags.map((t) => (
+         <>
+         { t.name === tag.name ? (
+         <Col xs={12} md={4}>
         <Link to={`/post/${post._id}`}>
            <img class="img-fluid" src={post.photo} alt={post.photo} height="20vh"/>
        </Link>
          <div class="card-block">
-           <h2 class="card-title"><Link to={`/post/${post._id}`}>{post.title}</Link></h2>
-           <h4 class="card-text">{post?.description.slice(0,20)}</h4>
+           <h2 class="card-title" style={{marginBottom:0}} ><Link to={`/post/${post._id}`}>{post.title}</Link></h2>
            <div class="metafooter">
              <div class="wrapfooter">
                <span class="meta-footer-thumb">
-               <a href="author.html"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"/></a>
                </span>
                <span class="author-meta">
-               <span class="post-name"><Link to={`/author/${post.author._id}`}>{post.author.name}</Link><br/>
-               <span class="post-date">{post.createdAt.substring(0, 10)}</span><span class="dot"></span><span class="post-read">6 min read</span>
+               <span class="post-date">{post.createdAt.substring(0, 10)}</span><span class="dot"></span><span class="post-read">{getWordCount(post.text)} mins read</span>
                </span>
-               <span class="post-read-more"><a href="post.html" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25"><path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path></svg></a></span>
-             </span>
+             
              </div>
            </div>
          </div>
        </Col>
-       ) : (
+       ) : (<> </>) }
+        
+       </>
+
+       ))} 
         <> </>
-       )}
+       
     </>
 		
      ))}
@@ -165,6 +182,8 @@ dispatch(getPostsAction())
     )}
   </section>
 
+  ))}
+</div>
           </Container>
 
        

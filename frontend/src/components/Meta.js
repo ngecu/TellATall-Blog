@@ -13,7 +13,7 @@ const Meta = ({ title, description, keywords }) => {
 
 Meta.defaultProps = {
   title: 'TellATale',
-  description: 'TellATale is your go-to entertainment & lifestyle news website.We provide you with the latest breaking news, gossip and videos straight from the industry.',
+  description: 'TellATale is your  Your Go-to Campus Life entertainment & lifestyle digital magazine.We provide you with the latest breaking news, gossip and videos straight from the industry.',
   keywords: 'circulator, gossip, gossiper, newsmonger, quidnunc, tale-teller, talebearer, telltale, yenta,betrayer, blabbermouth, informant, informer, snitcher, squealer, stool pigeon, tattler, tattletale,libeler, scandalmonger'
 }
 

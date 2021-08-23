@@ -4,7 +4,7 @@ import Post from '../models/postModel.js'
 
 const allPostItems = asyncHandler(async (req,res)=>{
   const posts = await Post.find().populate('tags').populate('author')
-  console.log('POOOSSTSS',posts[1].tags)
+ 
 
   res.json(posts)
 })
