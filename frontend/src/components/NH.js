@@ -85,6 +85,9 @@ const NH = () => {
                                     <LinkContainer to='/admin/postlist'>
                                         <NavDropdown.Item>Posts</NavDropdown.Item>
                                     </LinkContainer>
+                                    <LinkContainer to='/admin/taglist'>
+                                        <NavDropdown.Item>Tags</NavDropdown.Item>
+                                    </LinkContainer>
 
                                 </NavDropdown>
                             )}

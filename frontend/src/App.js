@@ -13,7 +13,7 @@ import UserListScreen from './screens/Admin/UserListScreen'
 import PostListScreen from './screens/Admin/PostListScreen'
 
 import UserEditScreen from "./screens/Admin/UserEditScreen";
-
+import TagScreen from './screens/Admin/TagListScreen'
 
 import LoginScreen from './screens/Auth/LoginScreen'
 import RegisterScreen from './screens/Auth/RegisterScreen'
@@ -35,20 +35,6 @@ import './style.css'
 
 
 const App = () => {
-
-  useEffect(() => {
-    const head = document.querySelector('head');
-    const script = document.createElement('script');
-    script.setAttribute('async',true);
-    script.setAttribute('src', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4787058812026050');
-    head.appendChild(script);
-  });
-
-
-
-
-  
-
   return (
     <Router>
       <NH className="header1"  />
@@ -84,6 +70,8 @@ const App = () => {
 
 
           <Route path='/admin/userlist' component={UserListScreen} />
+          <Route path='/admin/taglist' component={TagScreen} />
+
           <Route path='/admin/postlist' component={PostListScreen} />
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/admin/post/:id/edit' component={PostEditScreen} />

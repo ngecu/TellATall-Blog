@@ -24,7 +24,7 @@ import {
 } from './reducers/userReducers'
 
 import{
-  ReadTagsReducer
+  ReadTagsReducer,UpdateTagsReducer,tagDeleteReducer
 } from './reducers/tagReducers'
 
 const reducer = combineReducers({
@@ -47,7 +47,10 @@ const reducer = combineReducers({
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
 
-  readTags:ReadTagsReducer
+  readTags:ReadTagsReducer,
+  updateTags:UpdateTagsReducer,
+  deleteTags:tagDeleteReducer,
+
 
 })
 
