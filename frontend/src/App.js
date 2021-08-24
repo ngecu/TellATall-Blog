@@ -30,6 +30,7 @@ import ProfileScreen from "./screens/Profile/ProfileScreen";
 
 
 import './style.css'
+import TagEditScreen from './screens/Admin/TagEditScreen'
 
 
 
@@ -75,7 +76,7 @@ const App = () => {
           <Route path='/admin/postlist' component={PostListScreen} />
           <Route path='/admin/user/:id/edit' component={UserEditScreen} />
           <Route path='/admin/post/:id/edit' component={PostEditScreen} />
-
+          {/* <Route path='/admin/tag/:id/edit' component={TagEditScreen} /> */}
 
           <Route path='/' component={HomeScreen} exact />
       </main>

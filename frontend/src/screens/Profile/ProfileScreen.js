@@ -163,7 +163,9 @@ pauseOnHover
         ) : errorPosts ? (
           <Message variant='danger'>{errorPosts}</Message>
         ) : (
-          <Table striped bordered hover responsive className='table-sm'>
+          <Row>
+            <Col>
+            <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
                 <th>ID</th>
@@ -202,6 +204,12 @@ pauseOnHover
               ))}
             </tbody>
           </Table>
+            </Col>
+            <Col>
+            
+            </Col>
+          </Row>
+          
         )}
       </Col>
 

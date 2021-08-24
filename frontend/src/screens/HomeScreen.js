@@ -85,14 +85,13 @@ dispatch(getPostsAction())
     <Link to={`/post/${post._id}`}>
     <img
     style={{
-      background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5))",height:"20%"}}
+      background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5))",height:"20vh"}}
   
       className="d-block w-100"
       src={post.photo}
-      alt="First slide"
+      alt={post.title}
     />
     <Carousel.Caption>
-      <h5>First slide label</h5>
       <p>{post.title}</p>
     </Carousel.Caption>
     </Link>
@@ -105,7 +104,7 @@ dispatch(getPostsAction())
 			<Col xs={12} md={6}>
 				
 	<div className="card-columns listfeaturedtag">
-			{posts.slice(0,5).map((post) => (
+			{posts.slice(0,4).map((post) => (
 				<Link to={`/post/${post._id}`}>
 <Card className="bg-dark text-white h-100">
   <Card.Img src={post.photo} alt="Card image" />
