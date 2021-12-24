@@ -11,7 +11,7 @@ function App() {
     <Router>
     
      <Header/>
-    <div className="App"   style={{minHeight: "75rem",paddingTop:"4.5rem",backgroundColor:"#f2f3f5"}}>
+    <div className="App"   style={{minHeight: "75rem",paddingTop:"6.5rem",backgroundColor:"#f2f3f5"}}>
       
     <Routes>
       <Route path="/" element={<HomeScreen/>}  exact />    
