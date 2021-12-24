@@ -2,7 +2,7 @@ import posts from '../components/Posts.js'
 import Post from '../components/Post'
 import {Row,Col,Container,Card,Carousel} from 'react-bootstrap'
 import StockTicker from '../components/Ticker.js'
-
+import {Link} from 'react-router-dom'
 const HomeScreen = () =>{
     console.log(posts)
 
@@ -41,7 +41,7 @@ const HomeScreen = () =>{
       {posts.map((post) => (
 
   <Carousel.Item style={{height:"100%"}} >
-    <a href={`/post/${post._id}`} style={{height:"100%"}} >
+    <Link to={`/post/${post._id}`} style={{height:"100%"}} >
     <img
     style={{
       background: "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5))",height:"45vh"}}
@@ -52,7 +52,7 @@ const HomeScreen = () =>{
     <Carousel.Caption>
       <p>{post.title}</p>
     </Carousel.Caption>
-    </a>
+    </Link>
   </Carousel.Item>
 ))}
 </Carousel>
@@ -63,7 +63,7 @@ const HomeScreen = () =>{
 				
 	<div className="card-columns listfeaturedtag">
 			{posts.slice(0,4).map((post) => (
-				<a href={`/post/${post._id}`}>
+				<Link to={`/post/${post._id}`}>
 <Card className="bg-dark text-white h-100">
   <Card.Img src={`/images/${post.photo}`} alt="Card image" />
   <Card.ImgOverlay style={{  "background": "linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5))","height":"100%"}}>
@@ -76,7 +76,7 @@ const HomeScreen = () =>{
  
   </Card.ImgOverlay>
 </Card>
-</a>
+</Link>
               ))}
 </div>
 
@@ -87,7 +87,7 @@ const HomeScreen = () =>{
     <section class="recent-posts">
 	<div class="section-title">
 		<h2><span>Entertainment</span>
-    <a href={`/tag/x`} className="float-right">Read More <i class="fas fa-angle-double-right"></i> </a> 
+    <Link to={`/tag/x`} className="float-right">Read More <i class="fas fa-angle-double-right"></i> </Link> 
 
     </h2>
 
