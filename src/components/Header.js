@@ -1,8 +1,7 @@
 import React,{useState, useEffect  }  from 'react'
 // import { Link } from 'react-router-dom'
-// import { LinkContainer } from 'react-router-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown,Form,FormControl,Button } from 'react-bootstrap'
-
 import logo from '../resources/images/logo.png'
 
 
@@ -16,13 +15,13 @@ const Header = () => {
 
             <Navbar style={{borderBottom:"solid  #3737f7 "}} bg='light' variant='light' fixed="top" expand='lg' collapseOnSelect>
                 <Container>
-                    {/* <LinkContainer to='/' style={{fontFamily:"Righteous"}}> */}
+                    <LinkContainer to='/' style={{fontFamily:"Righteous"}}>
                         <Navbar.Brand  ><img  className="my-0" src={logo}
                          style={{maxWidth: "70px",
                          maxHeight: "70px",
                         }}
                          />TellATale  </Navbar.Brand>
-                    {/* </LinkContainer> */}
+                    </LinkContainer>
 
                   
     <Navbar.Collapse id="basic-navbar-nav">
